@@ -92,14 +92,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="{{ Auth::user()->foto }}" class="user-image" alt="">
+              <img src="{{asset('/'.Auth::user()->foto) }}" class="user-image" alt=""/>
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">{{ Auth::user()->nombre }} {{ Auth::user()->apellidos }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-              <img src="{{ Auth::user()->foto }}" class="img-circle" alt="">
+              <img src="{{ asset('/'.Auth::user()->foto) }}" class="img-circle" alt=""/>
 
                 <p>
                   {{ Auth::user()->nombre }} {{ Auth::user()->apellidos }}
@@ -133,7 +133,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{Auth::user()->foto}}" style="height:37px !important;" class="img-circle" alt="">
+          <img src="{{asset('/'.Auth::user()->foto)}}" style="height:37px !important;" class="img-circle" alt="">
         </div>
         <div class="pull-left info">
           <p>{{ Auth::user()->nombre }}</p>
@@ -208,7 +208,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       Version 1.1
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2019 <a href="#">9no. Ciclo</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2019 <a href="#">devEineek</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->

@@ -9,7 +9,7 @@ $(document).ready(function(){
 		document.getElementById('idCurso').value = id;
 
 		$(this).parent().css('border','2px solid red');
-		
+
 		$("#DetalleReporte").html('');
 
 		loading('DetalleReporte');
@@ -24,7 +24,7 @@ $(document).ready(function(){
 			estadosNotasAlumnos(id);
 		else
 			alert('Reporte no disponible');
-		
+
 	});
 
 	$("#DetalleReporte").on('click','.get-data',function(){
@@ -34,7 +34,7 @@ $(document).ready(function(){
 		var html = '';
 		$("#DetalleAsistencias").html('');
 		loading('DetalleAsistencias');
-		$.post('/reportes/asis/detalle',{Alumno:alu,Curso:course,Tipo:tipo},function(rpta){
+		$.post('/appnotas/public/reportes/asis/detalle',{Alumno:alu,Curso:course,Tipo:tipo},function(rpta){
 			//console.log(rpta.asistencias);
 
 			if(rpta.asistencias.length)
@@ -58,12 +58,12 @@ $(document).ready(function(){
 									'<td>'+rpta.asistencias[i].fecha+'</td>'+
 								'</tr>'
 					}
-								
+
 					html +=			'</tbody>'+
 								'</table>'+
 							'</div>';
-					
-					
+
+
 				}
 			else
 				html = '<div class="callout callout-info">'+
@@ -77,25 +77,25 @@ $(document).ready(function(){
 });
 
 function promedioGenerales (curso) {
-	$.get('/reportes/prom/'+curso,function(rpta){
+	$.get('/appnotas/public/reportes/prom/'+curso,function(rpta){
 		$("#DetalleReporte").html(rpta);
 	});
 }
 
 function detalleNotas (curso) {
-	$.get('/reportes/detallenotas/'+curso,function(rpta){
+	$.get('/appnotas/public/reportes/detallenotas/'+curso,function(rpta){
 		$("#DetalleReporte").html(rpta);
 	});
 }
 
 function estadosNotasAlumnos (curso) {
-	$.get('/reportes/alaprodes/'+curso,function(rpta){
+	$.get('/appnotas/public/reportes/alaprodes/'+curso,function(rpta){
 		$("#DetalleReporte").html(rpta);
 	});
 }
 
 function asistenciasAlumnos (curso) {
-	$.get('/reportes/alasis/'+curso,function(rpta){
+	$.get('/appnotas/public/reportes/alasis/'+curso,function(rpta){
 		$("#DetalleReporte").html(rpta);
 	});
 }
@@ -103,7 +103,7 @@ function asistenciasAlumnos (curso) {
 function nombreReporte () {
 	const tipo = localStorage.getItem('tipoReporte');
 	var nombre;
-	
+
 	if(tipo == "rpdet") nombre = "Detalles Notas";
 	else if(tipo == "rpalu") nombre = "Alumnos Aprobados y Desaprobados";
 	else if(tipo == "rpasi") nombre = "Asistencias por alumno";
@@ -122,7 +122,7 @@ function exportarExcel(){
 	                containerid: "tabla-reporte",
 	                datatype: $datatype.Table,
 	                filename: nombreReporte()
-			});	
+			});
 		}
 	})
 }
@@ -131,7 +131,7 @@ function exportarPDF(){
 	const tipo = localStorage.getItem('tipoReporte');
 	$("#btnPDF").click(function(){
 		if($("#DetalleReporte").children().length == 0){
-			alert('No ha generado reporte');	
+			alert('No ha generado reporte');
 		}else{
 			location.href = "/generarpdf/"+$("#idCurso").val()+"/"+tipo;
 		}

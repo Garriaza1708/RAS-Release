@@ -50,7 +50,7 @@ class GradeValueController extends Controller
         $students = Student::join('courses_students as cs','students.id','=',
                     'cs.student_id')
                     ->select('students.id as idAlumno',
-                        DB::raw("CONCAT(students.apellidos,' ',students.nombre) AS 
+                        DB::raw("CONCAT(students.apellidos,' ',students.nombre) AS
                             alumno"))
                     ->where('cs.course_id',\Session::get('idCourseSelect'))
                     ->orderBy('alumno','ASC')
@@ -63,8 +63,11 @@ class GradeValueController extends Controller
 
         $grade = Grade::where('id',\Session::get('idGradeSelect'))->first();
 
+        $period = Period_Range::where('period_id',\Session::get('idPeriodo'))
+                ->first();
+
         return view('menus.listaalumnos',
-                compact('students','subgrades','curso','grade'));
+                compact('students','subgrades','curso','grade','period'));
     }
 
     public function existsGradeValue($grade,$student,$period)
@@ -130,7 +133,7 @@ class GradeValueController extends Controller
             if($grade_value->save())
                 return response()->json(["Estado" => "Guardado"]);
 
-        return response()->json(["Estado" => "Error"]);   
+        return response()->json(["Estado" => "Error"]);
     }
 
     public function getGradeStudents($id,$idPeriodo)

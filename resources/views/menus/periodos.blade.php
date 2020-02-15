@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-	Periodos
+	Periódos
 @stop
 
 @section('description')
@@ -23,12 +23,12 @@
               <div class="tab-pane active" id="tab_1">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Lista de Periodos</h3>
+                  <h3 class="box-title">Lista de Periódos</h3>
                 </div>
                <div class="box-body">
                   <table id="tblPeriodos" class="table table-bordered table-hover" width="100%">
                    <thead>
-                     <tr>
+                     <tr> 
                        <th></th>
                        <th>Nombre</th>
                        <th>Duración</th>
@@ -51,7 +51,7 @@
                   </div>
                   <form role="form" method="POST" id="FormPeriodo">
                     <input type="hidden" name="Accion" id="Accion" value="Registrar">
-
+                    
                     <div class="box-body">
                       <div class="form-group">
                         <label for="Nombre">Nombre</label>
@@ -76,7 +76,7 @@
                       </div>
                       <div class="form-group">
                         <label for="descripcion">Descripción</label>
-                        <textarea class="form-control" name="Descripcion"
+                        <textarea class="form-control" name="Descripcion" 
                         id="Descripcion" rows="3" placeholder="Ingrese Descripción"></textarea>
                       </div>
                     </div>
@@ -85,8 +85,8 @@
                     <button type="submit" id="Enviar" class="btn btn-primary pull-right">Enviar</button>
                   </div>
             </form>
-                  </div>
-
+                  </div>  
+                
               </div>
               <!-- /.tab-pane -->
               <!--<div class="tab-pane" id="tab_3"></div>-->
@@ -161,7 +161,7 @@
                 insertar();
                 $("#FormPeriodo").data('bootstrapValidator').resetForm();
     });
-
+   
 
     //$(".select2").select2();
     configurarTabla();
@@ -170,3 +170,5 @@
     eliminar();
   </script>
 @stop
+
+

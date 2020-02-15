@@ -7,9 +7,9 @@ $(document).ready(function(){
 	});
 
 	$(".btn-save-grade").on('click',function(){
-		$.post('/notaingreso/insertar',$("#FormNotas").serializeObject(),function(rpta){
+		$.post('/appnotas/public/notaingreso/insertar',$("#FormNotas").serializeObject(),function(rpta){
 			if(rpta.Estado == "Guardado")
-				mensajePersonalizado("Notas","Notas Guardadas Correctamente","success",3000);	
+				mensajePersonalizado("Notas","Notas Guardadas Correctamente","success",3000);
 			else
 				mensajePersonalizado("Curso","Ocurrio un error","error",3000);
 		});
@@ -21,9 +21,9 @@ $(document).ready(function(){
 
 		var id = $(this).data('id');
 		$(this).parent().css('border','2px solid red');
-		
+
 		localStorage.setItem('idSubGradeSeleccionado',id);
-		
+
 		getGradesStudents();
 	});
 });
@@ -32,7 +32,7 @@ function getGradesStudents(){
 	var aux;
 	document.getElementById('idSubGrade').value = localStorage.getItem('idSubGradeSeleccionado');
 	document.getElementById('idPeriodo').value = localStorage.getItem('idPeriodoSeleccionado');
-	$.get('/notaingreso/get/values/'+localStorage.getItem('idSubGradeSeleccionado')+'/'+localStorage.getItem('idPeriodoSeleccionado'),
+	$.get('/appnotas/public/notaingreso/get/values/'+localStorage.getItem('idSubGradeSeleccionado')+'/'+localStorage.getItem('idPeriodoSeleccionado'),
 		function(rpta){
 		if(rpta.length)
 		{

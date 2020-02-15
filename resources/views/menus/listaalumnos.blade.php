@@ -14,7 +14,7 @@
 			@if(count($students))
 			<div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Alumnos del Curso 
+              <h3 class="box-title">Alumnos del Curso
               	<span style="font-size: 18px;" id="NombreCurso">
               		{{ $curso->nombre }}
               	</span>
@@ -24,8 +24,8 @@
             <div class="box-body">
 
             <form role="form" id="FormNotas" method="POST">
-            <input type="hidden" name="idSubGrade" id="idSubGrade">
-            <input type="hidden" name="idPeriodo" id="idPeriodo">
+            <input type="hidden" name="idSubGrade" id="idSubGrade" value="{{$grade}}">
+            <input type="hidden" name="idPeriodo" id="idPeriodo" value="{{$period}}">
               <table class="table table-bordered">
                 <tr>
                   <th style="width: 5px">#</th>
@@ -36,14 +36,14 @@
 					<tr style="font-size: 15px">
 	                  <td>{{ $key + 1 }}</td>
 	                  <td>
-	                  	<input type="hidden" name="Alumnos" id="Alumnos" 
+	                  	<input type="hidden" name="Alumnos" id="Alumnos"
 	                  		value="{{ $student->idAlumno }}">
 	                  	{{ $student->alumno }}
 	                  </td>
 	                  <td>
-	                    <select name="Notas" id="Notas" class="form-control nt{{ 
+	                    <select name="Notas" id="Notas" class="form-control nt{{
 	                    	$student->idAlumno }}">
-	                    	<option value="00">00</option>	
+	                    	<option value="00">00</option>
 	                    	<option value="01">01</option>
 	                    	<option value="02">02</option>
 	                    	<option value="03">03</option>
@@ -64,7 +64,7 @@
 	                    	<option value="18">18</option>
 	                    	<option value="19">19</option>
 	                    	<option value="20">20</option>
-	                    </select>	
+	                    </select>
 	                  </td>
                	 	</tr>
 				@endforeach
@@ -77,15 +77,15 @@
             	</div>
             </div>
 
-            
+
             <!-- /.box-body -->
 
           </div>
           <!-- /.box -->
-				
+
 			@else
 				<div class="alert alert-warning alert-dismissible">
-		            <button type="button" class="close" data-dismiss="alert" 
+		            <button type="button" class="close" data-dismiss="alert"
 		                    aria-hidden="true">×</button>
 		            <h4><i class="icon fa fa-warning"></i> Advertencia!</h4>
 		                No existen alumnos registrados para este curso
@@ -98,7 +98,7 @@
             <div class="box-header with-border">
               <i class="fa fa-book"></i>
 
-              <h3 class="box-title">Sub Notas de 
+              <h3 class="box-title">Sub Notas de
 				<span style="font-size: 18px;" id="NombreNota">
 					{{ $grade->nombre }}
 				</span>
@@ -106,13 +106,13 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body" id="ListaSubNotas">
-           	
+
            	@if(count($subgrades))
 	            @foreach($subgrades as $subgrade)
-	                <span class="label label-success seleccionado" 
-	                style="font-size: 15px;text-align:center;display:block;margin-bottom:6px;height: 25px;" 
+	                <span class="label label-success seleccionado"
+	                style="font-size: 15px;text-align:center;display:block;margin-bottom:6px;height: 25px;"
 	                	data-id="{{ $subgrade->id }}">
-	                  <a href="#" class="a-set-subgrade" 
+	                  <a href="#" class="a-set-subgrade"
 	                  	style="color: white !important;
 	                  cursor: pointer;" data-id="{{ $subgrade->id }}">
 	                      {{ $subgrade->nombre }}
@@ -124,7 +124,7 @@
               	No existen Sub-Notas para la Nota Seleccionada
               </span>
             @endif
-             
+
             </div>
             <!-- /.box-body -->
           </div>

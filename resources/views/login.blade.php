@@ -21,14 +21,14 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-   <a href="{{ route('app.login.form') }}"><b>Ramos Academy Soft</b>
+   <a href="{{ route('app.login.form') }}"><b>SYS</b>GRA</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Iniciar Sesión</p>
 
     <form action="{{ route('app.login.submit') }}" method="post">
-      {{ csrf_field() }}
+      {{ csrf_field() }} 
       <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error':'' }}">
         <input type="email" class="form-control" placeholder="Email" name="email" id="email" value="{{ old('email') }}" required autofocus>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

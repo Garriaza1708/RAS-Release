@@ -20,7 +20,7 @@ function insertar(){
 		$.post('nota/insertar', $("#FormNota").serializeObject(),function(rpta) {
 			if(rpta.Estado == "Registrado")
 			{
-				mensajePersonalizado("Nota","Nota Creada Correctamente","success",3000);	
+				mensajePersonalizado("Nota","Nota Creada Correctamente","success",3000);
 			}
 			else if(rpta.Estado == "Editado")
 			{
@@ -74,11 +74,11 @@ function eliminar(){
 		    }
 		    })).get().on('pnotify.confirm', function(){
 		    $.post('nota/eliminar',{id:data.id},function(rpta){
-				if (rpta.Estado == "Eliminado") 
+				if (rpta.Estado == "Eliminado")
 				{
 					$("#tblNotas").DataTable().draw().clear();
 					mensajePersonalizado("Nota","Nota Eliminado Correctamente","success",3000);
-				}else 
+				}else
 				{
 					mensajePersonalizado("Nota","Ocurrio un error","error",3000);
 				}
@@ -86,4 +86,3 @@ function eliminar(){
     	});
 	});
 }
-
